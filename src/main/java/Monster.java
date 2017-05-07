@@ -1,6 +1,12 @@
 public class Monster {
 
   public Monster(String name, int personId) {
+
+    this.name = name;
   }
+
+public String getName() {
+  return name;
+}
 
 }
