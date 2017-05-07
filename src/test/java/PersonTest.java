@@ -21,4 +21,11 @@ public class PersonTest {
     assertEquals("[email protected]", testPerson.getEmail());
   }
 
+  @Test
+  public void equals_returnsTrueIfNameAndEmailAreSame_true() {
+    Person firstPerson = new Person("Henry", "[email protected]");
+    Person anotherPerson = new Person("Henry", "[email protected]");
+    assertTrue(firstPerson.equals(anotherPerson));
+  }
+
 }
