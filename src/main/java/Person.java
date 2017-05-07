@@ -20,6 +20,10 @@ public class Person {
     return email;
   }
 
+  public int getId() {
+    return id;
+  }
+
   @Override
   public boolean equals(Object otherPerson){
     if (!(otherPerson instanceof Person)) {
@@ -31,6 +35,16 @@ public class Person {
     }
   }
 
+  // public void save() {
+  //   try(Connection con = DB.sql2o.open()) {
+  //     String sql = "INSERT INTO persons (name, email) VALUES (:name, :email)";
+  //     con.createQuery(sql)
+  //       .addParameter("name", this.name)
+  //       .addParameter("email", this.email)
+  //       .executeUpdate();
+  //   }
+  // }
+
   public void save() {
     try(Connection con = DB.sql2o.open()) {
       String sql = "INSERT INTO persons (name, email) VALUES (:name, :email)";
@@ -41,6 +55,7 @@ public class Person {
         .getKey();
     }
   }
+
   public static List<Person> all() {
     String sql = "SELECT * FROM persons";
     try(Connection con = DB.sql2o.open()) {

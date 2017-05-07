@@ -31,12 +31,12 @@ public class PersonTest {
     assertTrue(firstPerson.equals(anotherPerson));
   }
 
- //  @Test
- // public void save_insertsObjectIntoDatabase_Person() {
- //   Person testPerson = new Person("Henry", "[email protected]");
- //   testPerson.save();
- //   assertTrue(Person.all().get(0).equals(testPerson));
- // }
+  @Test
+ public void save_insertsObjectIntoDatabase_Person() {
+   Person testPerson = new Person("Henry", "[email protected]");
+   testPerson.save();
+   assertTrue(Person.all().get(0).equals(testPerson));
+ }
 
  @Test
   public void save_assignsIdToObject() {
@@ -57,11 +57,12 @@ public class PersonTest {
    }
 
    @Test
-  public void save_assignsIdToObject() {
-    Person testPerson = new Person("Henry", "henry@henry.com");
-    testPerson.save();
-    Person savedPerson = Person.all().get(0);
-    assertEquals(testPerson.getId(), savedPerson.getId());
+  public void find_returnsPersonWithSameId_secondPerson() {
+    Person firstPerson = new Person("Henry", "henry@henry.com");
+    firstPerson.save();
+    Person secondPerson = new Person("Harriet", "harriet@harriet.com");
+    secondPerson.save();
+    assertEquals(Person.find(secondPerson.getId()), secondPerson);
   }
 
 }
