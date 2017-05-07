@@ -9,4 +9,11 @@ public class PersonTest {
     assertEquals(true, testPerson instanceof Person);
   }
 
+  @Test
+  public void getName_personInstantiatesWithName_Henry() {
+    Person testPerson = new Person("Henry", "[email protected]");
+    assertEquals("Henry", testPerson.getName());
+  }
+
+
 }
