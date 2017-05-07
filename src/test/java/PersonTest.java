@@ -29,4 +29,11 @@ public class PersonTest {
     assertTrue(firstPerson.equals(anotherPerson));
   }
 
+  @Test
+ public void save_insertsObjectIntoDatabase_Person() {
+   Person testPerson = new Person("Henry", "[email protected]");
+   testPerson.save();
+   assertTrue(Person.all().get(0).equals(testPerson));
+ }
+
 }
