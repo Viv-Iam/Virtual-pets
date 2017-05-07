@@ -31,12 +31,20 @@ public class PersonTest {
     assertTrue(firstPerson.equals(anotherPerson));
   }
 
-  @Test
- public void save_insertsObjectIntoDatabase_Person() {
-   Person testPerson = new Person("Henry", "[email protected]");
-   testPerson.save();
-   assertTrue(Person.all().get(0).equals(testPerson));
- }
+ //  @Test
+ // public void save_insertsObjectIntoDatabase_Person() {
+ //   Person testPerson = new Person("Henry", "[email protected]");
+ //   testPerson.save();
+ //   assertTrue(Person.all().get(0).equals(testPerson));
+ // }
+
+ @Test
+  public void save_assignsIdToObject() {
+    Person testPerson = new Person("Henry", "henry@henry.com");
+    testPerson.save();
+    Person savedPerson = Person.all().get(0);
+    assertEquals(testPerson.getId(), savedPerson.getId());
+  }
 
  @Test
    public void all_returnsAllInstancesOfPerson_true() {
