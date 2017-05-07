@@ -1,4 +1,6 @@
 import org.sql2o.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Person {
   private String name;
@@ -35,6 +37,13 @@ public class Person {
         .addParameter("name", this.name)
         .addParameter("email", this.email)
         .executeUpdate();
+    }
+  }
+
+  public static List<Person> all() {
+    String sql = "SELECT * FROM persons";
+    try(Connection con = DB.sql2o.open()) {
+     return con.createQuery(sql).executeAndFetch(Person.class);
     }
   }
 }
