@@ -120,4 +120,11 @@ public static List<Monster> all() {
     foodLevel++;
   }
 
+  public void play(){
+      if (playLevel >= MAX_PLAY_LEVEL){
+        throw new UnsupportedOperationException("You cannot play with monster anymore!");
+      }
+      playLevel++;
+    }
+
 }
