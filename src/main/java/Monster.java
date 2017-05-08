@@ -18,7 +18,8 @@ public class Monster {
   public Monster(String name, int personId) {
     this.name = name;
     this.personId = personId;
-    this.playLevel = MAX_PLAY_LEVEL / 2;
+    playLevel = MAX_PLAY_LEVEL / 2;
+    sleepLevel = MAX_SLEEP_LEVEL / 2;
   }
 
 public String getName() {
@@ -35,6 +36,10 @@ public int getId() {
 
 public int getPlayLevel(){
     return playLevel;
+  }
+
+  public int getSleepLevel(){
+    return sleepLevel;
   }
 public static List<Monster> all() {
     String sql = "SELECT * FROM monsters";
