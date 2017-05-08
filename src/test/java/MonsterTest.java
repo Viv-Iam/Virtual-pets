@@ -1,6 +1,8 @@
 import org.junit.*;
 import static org.junit.Assert.*;
 import org.sql2o.*;
+import java.sql.Timestamp;
+import java.util.Date;
 
 
 public class MonsterTest {
@@ -194,5 +196,14 @@ public class MonsterTest {
       }
       assertTrue(testMonster.getSleepLevel() <= Monster.MAX_SLEEP_LEVEL);
     }
+
+    @Test
+  public void save_recordsTimeOfCreationInDatabase() {
+    Monster testMonster = new Monster("Bubbles", 1);
+    testMonster.save();
+    Timestamp savedMonsterBirthday = Monster.find(testMonster.getId()).getBirthday();
+    Timestamp rightNow = new Timestamp(new Date().getTime());
+    assertEquals(rightNow, savedMonsterBirthday);
+  }
 
 }
