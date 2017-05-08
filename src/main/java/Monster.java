@@ -85,4 +85,13 @@ public static List<Monster> all() {
      return monster;
    }
  }
+
+ public boolean isAlive() {
+   if (foodLevel <= MIN_ALL_LEVELS ||
+   playLevel <= MIN_ALL_LEVELS ||
+   sleepLevel <= MIN_ALL_LEVELS) {
+     return false;
+   }
+   return true;
+ }
 }
