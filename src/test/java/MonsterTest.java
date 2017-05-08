@@ -47,4 +47,14 @@ public class MonsterTest {
    assertEquals(savedMonster.getId(), testMonster.getId());
  }
 
+ @Test
+ public void all_returnsAllInstancesOfMonster_true() {
+   Monster firstMonster = new Monster("Bubbles", 1);
+   firstMonster.save();
+   Monster secondMonster = new Monster("Spud", 1);
+   secondMonster.save();
+   assertEquals(true, Monster.all().get(0).equals(firstMonster));
+   assertEquals(true, Monster.all().get(1).equals(secondMonster));
+ }
+
 }
