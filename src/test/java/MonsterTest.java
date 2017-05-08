@@ -92,7 +92,7 @@ public class MonsterTest {
   @Test
   public void monster_instantiatesWithHalfFullFoodLevel(){
     Monster testMonster = new Monster("Bubbles", 1);
-    assertEquals(testMonster.getFoodLevel(), (Monster.MAX_FOOD_LEVEL / 2));
+    assertEquls(testMonster.getFoodLevel(), (Monster.MAX_FOOD_LEVEL / 2));
   }
 
 }
