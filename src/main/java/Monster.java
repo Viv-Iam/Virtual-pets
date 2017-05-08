@@ -1,4 +1,6 @@
 import org.sql2o.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Monster {
   private String name;
@@ -20,6 +22,13 @@ public int getPersonId() {
 public int getId() {
   return id;
 }
+
+public static List<Monster> all() {
+    String sql = "SELECT * FROM monsters";
+    try(Connection con = DB.sql2o.open()) {
+      return con.createQuery(sql).executeAndFetch(Monster.class);
+    }
+  }
 
 @Override
   public boolean equals(Object otherMonster){
