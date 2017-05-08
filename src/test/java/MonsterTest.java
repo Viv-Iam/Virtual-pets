@@ -166,4 +166,15 @@ public class MonsterTest {
     }
   }
 
+  @Test
+  public void monster_playLevelCannotGoBeyondMaxValue(){
+    Monster testMonster = new Monster("Bubbles", 1);
+    for(int i = Monster.MIN_ALL_LEVELS; i <= (Monster.MAX_PLAY_LEVEL); i++){
+      try {
+        testMonster.play();
+      } catch (UnsupportedOperationException exception){ }
+    }
+    assertTrue(testMonster.getPlayLevel() <= Monster.MAX_PLAY_LEVEL);
+  }
+
 }
