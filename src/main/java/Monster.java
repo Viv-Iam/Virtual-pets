@@ -20,6 +20,7 @@ public class Monster {
     this.personId = personId;
     playLevel = MAX_PLAY_LEVEL / 2;
     sleepLevel = MAX_SLEEP_LEVEL / 2;
+    foodLevel = MAX_FOOD_LEVEL / 2;
   }
 
 public String getName() {
@@ -41,6 +42,11 @@ public int getPlayLevel(){
   public int getSleepLevel(){
     return sleepLevel;
   }
+
+  public int getFoodLevel(){
+      return foodLevel;
+    }
+
 public static List<Monster> all() {
     String sql = "SELECT * FROM monsters";
     try(Connection con = DB.sql2o.open()) {
