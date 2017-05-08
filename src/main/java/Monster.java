@@ -109,9 +109,9 @@ public static List<Monster> all() {
     sleepLevel++;
   }
 
-  public void feed(){
-    foodLevel++;
-  }
+  // public void feed(){
+  //   foodLevel++;
+  // }
 
   public void feed(){
     if (foodLevel >= MAX_FOOD_LEVEL){
