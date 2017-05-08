@@ -77,4 +77,10 @@ public class MonsterTest {
     assertEquals(savedMonster.getPersonId(), testPerson.getId());
   }
 
+  @Test
+    public void monster_instantiatesWithHalfFullPlayLevel(){
+      Monster testMonster = new Monster("Bubbles", 1);
+      assertEquals(testMonster.getPlayLevel(), (Monster.MAX_PLAY_LEVEL / 2));
+    }
+
 }
