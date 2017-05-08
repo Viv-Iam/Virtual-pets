@@ -94,4 +94,11 @@ public static List<Monster> all() {
    }
    return true;
  }
+
+ public void depleteLevels(){
+    playLevel--;
+    foodLevel--;
+    sleepLevel--;
+  }
+
 }
