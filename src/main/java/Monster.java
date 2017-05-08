@@ -101,4 +101,8 @@ public static List<Monster> all() {
     sleepLevel--;
   }
 
+  public void play(){
+    playLevel++;
+  }
+
 }
