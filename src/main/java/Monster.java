@@ -105,4 +105,12 @@ public static List<Monster> all() {
     playLevel++;
   }
 
+  public void sleep(){
+    sleepLevel++;
+  }
+
+  public void feed(){
+    foodLevel++;
+  }
+
 }

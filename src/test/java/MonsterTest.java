@@ -126,4 +126,27 @@ public class MonsterTest {
     assertTrue(testMonster.getPlayLevel() > (Monster.MAX_PLAY_LEVEL / 2));
   }
 
+  @Test
+  public void sleep_increasesMonsterSleepLevel(){
+    Monster testMonster = new Monster("Bubbles", 1);
+    testMonster.sleep();
+    assertTrue(testMonster.getSleepLevel() > (Monster.MAX_SLEEP_LEVEL / 2));
+  }
+
+  @Test
+  public void feed_increasesMonsterFoodLevel(){
+    Monster testMonster = new Monster("Bubbles", 1);
+    testMonster.feed();
+    assertTrue(testMonster.getFoodLevel() > (Monster.MAX_FOOD_LEVEL / 2));
+  }
+
+  @Test
+  public void monster_foodLevelCannotGoBeyondMaxValue(){
+    Monster testMonster = new Monster("Bubbles", 1);
+    for(int i = Monster.MIN_ALL_LEVELS; i <= (Monster.MAX_FOOD_LEVEL + 2); i++){
+      testMonster.feed();
+    }
+    assertTrue(testMonster.getFoodLevel() <= Monster.MAX_FOOD_LEVEL);
+  }
+
 }
