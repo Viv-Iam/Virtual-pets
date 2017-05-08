@@ -17,6 +17,10 @@ public int getPersonId() {
   return personId;
 }
 
+public int getId() {
+  return id;
+}
+
 @Override
   public boolean equals(Object otherMonster){
     if (!(otherMonster instanceof Monster)) {
