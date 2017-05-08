@@ -52,6 +52,10 @@ public int getPlayLevel(){
       return foodLevel;
     }
 
+    public Timestamp getBirthday(){
+    return birthday;
+  }
+
 public static List<Monster> all() {
     String sql = "SELECT * FROM monsters";
     try(Connection con = DB.sql2o.open()) {
