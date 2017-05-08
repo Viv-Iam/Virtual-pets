@@ -1,6 +1,7 @@
 import org.sql2o.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.sql.Timestamp;
 
 public class Monster {
   private String name;
@@ -9,6 +10,10 @@ public class Monster {
   private int foodLevel;
   private int sleepLevel;
   private int playLevel;
+  private Timestamp birthday;
+  private Timestamp lastSlept;
+  private Timestamp lastAte;
+  private Timestamp lastPlayed;
 
   public static final int MAX_FOOD_LEVEL = 3;
   public static final int MAX_SLEEP_LEVEL = 8;
@@ -101,13 +106,13 @@ public static List<Monster> all() {
     sleepLevel--;
   }
 
-  public void play(){
-    playLevel++;
-  }
-
-  public void sleep(){
-    sleepLevel++;
-  }
+  // public void play(){
+  //   playLevel++;
+  // }
+  //
+  // public void sleep(){
+  //   sleepLevel++;
+  // }
 
   // public void feed(){
   //   foodLevel++;
