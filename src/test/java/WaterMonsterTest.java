@@ -288,4 +288,12 @@ public class WaterMonsterTest {
     assertTrue(testWaterMonster.getWaterLevel() > (WaterMonster.MAX_WATER_LEVEL / 2));
   }
 
+  @Test(expected = UnsupportedOperationException.class)
+  public void water_throwsExceptionIfWaterLevelIsAtMaxValue(){
+    WaterMonster testWaterMonster = new WaterMonster("Drippy", 1);
+    for(int i = WaterMonster.MIN_ALL_LEVELS; i <= (WaterMonster.MAX_WATER_LEVEL); i++){
+      testWaterMonster.water();
+    }
+  }
+
 }
