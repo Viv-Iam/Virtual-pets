@@ -20,9 +20,9 @@ public class FireMonster extends Monster {
     return fireLevel;
   }
 
-  public void kindling(){
-   fireLevel++;
- }
+ //  public void kindling(){
+ //   fireLevel++;
+ // }
 
  public void kindling(){
     if (fireLevel >= MAX_PLAY_LEVEL){
@@ -47,5 +47,26 @@ public class FireMonster extends Monster {
      return monster;
    }
  }
+
+ @Override
+ public void depleteLevels(){
+   if (isAlive()){
+     playLevel--;
+     foodLevel--;
+     sleepLevel--;
+     fireLevel--;
+   }
+ }
+
+ @Override
+  public boolean isAlive() {
+    if (foodLevel <= MIN_ALL_LEVELS ||
+    playLevel <= MIN_ALL_LEVELS ||
+    fireLevel <= MIN_ALL_LEVELS ||
+    sleepLevel <= MIN_ALL_LEVELS) {
+      return false;
+    }
+    return true;
+  }
 
 }

@@ -109,14 +109,14 @@ public class FireMonsterTest {
     assertEquals(testFireMonster.isAlive(), true);
   }
 
-  @Test
-  public void depleteLevels_reducesAllLevels(){
-    FireMonster testFireMonster = new FireMonster("Bubbles", 1);
-    testFireMonster.depleteLevels();
-    assertEquals(testFireMonster.getFoodLevel(), (FireMonster.MAX_FOOD_LEVEL / 2) - 1);
-    assertEquals(testFireMonster.getSleepLevel(), (FireMonster.MAX_SLEEP_LEVEL / 2) - 1);
-    assertEquals(testFireMonster.getPlayLevel(), (FireMonster.MAX_PLAY_LEVEL / 2) - 1);
-  }
+  // @Test
+  // public void depleteLevels_reducesAllLevels(){
+  //   FireMonster testFireMonster = new FireMonster("Bubbles", 1);
+  //   testFireMonster.depleteLevels();
+  //   assertEquals(testFireMonster.getFoodLevel(), (FireMonster.MAX_FOOD_LEVEL / 2) - 1);
+  //   assertEquals(testFireMonster.getSleepLevel(), (FireMonster.MAX_SLEEP_LEVEL / 2) - 1);
+  //   assertEquals(testFireMonster.getPlayLevel(), (FireMonster.MAX_PLAY_LEVEL / 2) - 1);
+  // }
 
   @Test
   public void isAlive_recognizesFireMonsterIsDeadWhenLevelsReachMinimum_false(){
@@ -295,5 +295,15 @@ public class FireMonsterTest {
       testFireMonster.kindling();
     }
   }
+
+  @Test
+ public void depleteLevels_reducesAllLevels(){
+   FireMonster testFireMonster = new FireMonster("Bubbles", 1);
+   testFireMonster.depleteLevels();
+   assertEquals(testFireMonster.getFoodLevel(), (FireMonster.MAX_FOOD_LEVEL / 2) - 1);
+   assertEquals(testFireMonster.getSleepLevel(), (FireMonster.MAX_SLEEP_LEVEL / 2) - 1);
+   assertEquals(testFireMonster.getPlayLevel(), (FireMonster.MAX_PLAY_LEVEL / 2) - 1);
+   assertEquals(testFireMonster.getFireLevel(), (FireMonster.MAX_FIRE_LEVEL / 2) - 1);
+ }
 
 }

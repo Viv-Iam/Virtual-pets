@@ -275,4 +275,10 @@ public class WaterMonsterTest {
     assertTrue(testWaterMonster.getFoodLevel() >= 0);
   }
 
+  @Test
+  public void waterMonster_instantiatesWithHalfFullWaterLevel(){
+    WaterMonster testWaterMonster = new WaterMonster("Drippy", 1);
+    assertEquals(testWaterMonster.getWaterLevel(), (WaterMonster.MAX_WATER_LEVEL / 2));
+  }
+
 }
