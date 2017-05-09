@@ -288,4 +288,12 @@ public class FireMonsterTest {
     assertTrue(testFireMonster.getFireLevel() > (FireMonster.MAX_FIRE_LEVEL / 2));
   }
 
+  @Test(expected = UnsupportedOperationException.class)
+  public void kindling_throwsExceptionIfFireLevelIsAtMaxValue(){
+    FireMonster testFireMonster = new FireMonster("Smokey", 1);
+    for(int i = FireMonster.MIN_ALL_LEVELS; i <= (FireMonster.MAX_FIRE_LEVEL); i++){
+      testFireMonster.kindling();
+    }
+  }
+
 }
