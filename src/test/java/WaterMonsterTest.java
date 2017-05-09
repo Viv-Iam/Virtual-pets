@@ -281,4 +281,11 @@ public class WaterMonsterTest {
     assertEquals(testWaterMonster.getWaterLevel(), (WaterMonster.MAX_WATER_LEVEL / 2));
   }
 
+  @Test
+  public void water_increasesWaterMonsterWaterLevel(){
+    WaterMonster testWaterMonster = new WaterMonster("Drippy", 1);
+    testWaterMonster.water();
+    assertTrue(testWaterMonster.getWaterLevel() > (WaterMonster.MAX_WATER_LEVEL / 2));
+  }
+
 }
