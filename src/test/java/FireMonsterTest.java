@@ -275,4 +275,10 @@ public class FireMonsterTest {
     assertTrue(testFireMonster.getFoodLevel() >= 0);
   }
 
+  @Test
+  public void fireMonster_instantiatesWithHalfFullFireLevel(){
+    FireMonster testFireMonster = new FireMonster("Smokey", 1);
+    assertEquals(testFireMonster.getFireLevel(), (FireMonster.MAX_FIRE_LEVEL / 2));
+  }
+
 }

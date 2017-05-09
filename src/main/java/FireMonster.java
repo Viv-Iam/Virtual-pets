@@ -1,5 +1,6 @@
 import java.util.Timer;
 import org.sql2o.*;
+import java.util.List;
 
 public class FireMonster extends Monster {
 
@@ -11,5 +12,22 @@ public class FireMonster extends Monster {
     foodLevel = MAX_FOOD_LEVEL / 2;
     timer = new Timer();
   }
+
+  public static List<FireMonster> all() {
+    String sql = "SELECT * FROM monsters;";
+    try(Connection con = DB.sql2o.open()) {
+      return con.createQuery(sql).executeAndFetch(FireMonster.class);
+    }
+  }
+
+  public static FireMonster find(int id) {
+   try(Connection con = DB.sql2o.open()) {
+     String sql = "SELECT * FROM monsters where id=:id";
+     FireMonster monster = con.createQuery(sql)
+       .addParameter("id", id)
+       .executeAndFetchFirst(FireMonster.class);
+     return monster;
+   }
+ }
 
 }
