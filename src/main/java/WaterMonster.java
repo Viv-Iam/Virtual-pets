@@ -19,6 +19,12 @@ public class WaterMonster extends Monster {
   public int getWaterLevel(){
     return waterLevel;
   }
+  public void water(){
+    if (waterLevel >= MAX_WATER_LEVEL){
+      throw new UnsupportedOperationException("You cannot water your pet any more!");
+    }
+    waterLevel++;
+  }
 
   public static List<WaterMonster> all() {
     String sql = "SELECT * FROM monsters;";
