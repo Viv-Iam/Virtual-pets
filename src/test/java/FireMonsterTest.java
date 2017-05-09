@@ -281,4 +281,11 @@ public class FireMonsterTest {
     assertEquals(testFireMonster.getFireLevel(), (FireMonster.MAX_FIRE_LEVEL / 2));
   }
 
+  @Test
+  public void kindling_increasesFireMonsterFireLevel(){
+    FireMonster testFireMonster = new FireMonster("Smokey", 1);
+    testFireMonster.kindling();
+    assertTrue(testFireMonster.getFireLevel() > (FireMonster.MAX_FIRE_LEVEL / 2));
+  }
+
 }
