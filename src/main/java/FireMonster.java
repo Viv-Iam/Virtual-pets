@@ -24,6 +24,13 @@ public class FireMonster extends Monster {
    fireLevel++;
  }
 
+ public void kindling(){
+    if (fireLevel >= MAX_PLAY_LEVEL){
+      throw new UnsupportedOperationException("You cannot give any more kindling!");
+    }
+    fireLevel++;
+  }
+
   public static List<FireMonster> all() {
     String sql = "SELECT * FROM monsters;";
     try(Connection con = DB.sql2o.open()) {
