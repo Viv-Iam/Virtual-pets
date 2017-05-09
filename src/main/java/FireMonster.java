@@ -20,6 +20,10 @@ public class FireMonster extends Monster {
     return fireLevel;
   }
 
+  public void kindling(){
+   fireLevel++;
+ }
+
   public static List<FireMonster> all() {
     String sql = "SELECT * FROM monsters;";
     try(Connection con = DB.sql2o.open()) {
