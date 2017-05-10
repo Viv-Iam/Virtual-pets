@@ -17,6 +17,7 @@ public abstract class Monster {
   public Timestamp lastAte;
   public Timestamp lastPlayed;
   public Timer timer;
+  public String type;
 
   public static final int MAX_FOOD_LEVEL = 3;
   public static final int MAX_SLEEP_LEVEL = 8;
@@ -91,13 +92,14 @@ public int getPlayLevel(){
   }
 
   public void save() {
-      try(Connection con = DB.sql2o.open()) {
-        String sql = "INSERT INTO monsters (name, personId, birthday) VALUES (:name, :personId, now())";
-        this.id = (int) con.createQuery(sql, true)
-          .addParameter("name", this.name)
-          .addParameter("personId", this.personId)
-          .executeUpdate()
-          .getKey();
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "INSERT INTO monsters (name, personId, birthday, type) VALUES (:name, :personId, now(), :type)";
+      this.id = (int) con.createQuery(sql, true)
+        .addParameter("name", this.name)
+        .addParameter("personId", this.personId)
+        .addParameter("type", this.type)
+        .executeUpdate()
+        .getKey();
       }
     }
 

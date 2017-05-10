@@ -5,6 +5,7 @@ import java.util.List;
 public class FireMonster extends Monster {
   private int fireLevel;
     public static final int MAX_FIRE_LEVEL = 10;
+     public static final String DATABASE_TYPE = "fire";
 
   public FireMonster(String name, int personId) {
     this.name = name;
@@ -14,6 +15,7 @@ public class FireMonster extends Monster {
     foodLevel = MAX_FOOD_LEVEL / 2;
     fireLevel = MAX_FIRE_LEVEL / 2;
     timer = new Timer();
+    type = DATABASE_TYPE;
   }
 
   public int getFireLevel(){
@@ -32,11 +34,11 @@ public class FireMonster extends Monster {
   }
 
   public static List<FireMonster> all() {
-    String sql = "SELECT * FROM monsters;";
-    try(Connection con = DB.sql2o.open()) {
-      return con.createQuery(sql).executeAndFetch(FireMonster.class);
-    }
-  }
+   String sql = "SELECT * FROM monsters WHERE type='fire';";
+   try(Connection con = DB.sql2o.open()) {
+     return con.createQuery(sql).executeAndFetch(FireMonster.class);
+   }
+ }
 
   public static FireMonster find(int id) {
    try(Connection con = DB.sql2o.open()) {

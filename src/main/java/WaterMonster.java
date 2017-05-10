@@ -5,6 +5,7 @@ import java.util.List;
 public class WaterMonster extends Monster {
   private int waterLevel;
   public static final int MAX_WATER_LEVEL = 8;
+  public static final String DATABASE_TYPE = "water";
 
   public WaterMonster(String name, int personId) {
     this.name = name;
@@ -14,6 +15,7 @@ public class WaterMonster extends Monster {
     foodLevel = MAX_FOOD_LEVEL / 2;
     waterLevel = MAX_WATER_LEVEL / 2;
     timer = new Timer();
+    type = DATABASE_TYPE;
   }
 
   public int getWaterLevel(){
@@ -43,11 +45,32 @@ public class WaterMonster extends Monster {
     }
   }
 
-  public void water(){
-      if (waterLevel >= MAX_WATER_LEVEL){
-        throw new UnsupportedOperationException("You cannot water your pet any more!");
-      }
-      waterLevel++;
+  // public void water(){
+  //     if (waterLevel >= MAX_WATER_LEVEL){
+  //       throw new UnsupportedOperationException("You cannot water your pet any more!");
+  //     }
+  //     waterLevel++;
+  //   }
+
+    @Override
+  public void depleteLevels(){
+    if (isAlive()){
+      playLevel--;
+      foodLevel--;
+      sleepLevel--;
+      waterLevel--;
     }
+  }
+
+  @Override
+  public boolean isAlive() {
+    if (foodLevel <= MIN_ALL_LEVELS ||
+    playLevel <= MIN_ALL_LEVELS ||
+    waterLevel <= MIN_ALL_LEVELS ||
+    sleepLevel <= MIN_ALL_LEVELS) {
+      return false;
+    }
+    return true;
+  }
 
 }
