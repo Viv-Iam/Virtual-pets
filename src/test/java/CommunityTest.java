@@ -32,4 +32,11 @@ public class CommunityTest {
     Community anotherCommunity = new Community("Fire Enthusiasts", "Flame on!");
     assertTrue(testCommunity.equals(anotherCommunity));
   }
+
+  @Test
+  public void save_insertsObjectIntoDatabase_Community() {
+    Community testCommunity = new Community("Fire Enthusiasts", "Flame on!");
+    testCommunity.save();
+    assertEquals(true, Community.all().get(0).equals(testCommunity));
+  }
 }
