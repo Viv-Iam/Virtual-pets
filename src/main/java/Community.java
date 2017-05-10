@@ -20,6 +20,10 @@ public String getName() {
    return description;
  }
 
+ public int getId() {
+    return id;
+  }
+
  @Override
   public boolean equals(Object otherCommunity){
     if (!(otherCommunity instanceof Community)) {
@@ -48,4 +52,34 @@ public String getName() {
     return con.createQuery(sql).executeAndFetch(Community.class);
     }
   }
+
+  public void addPerson(Person person) {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "INSERT INTO communities_persons (community_id, person_id) VALUES (:community_id, :person_id)";
+      con.createQuery(sql)
+      .addParameter("community_id", this.getId())
+      .addParameter("person_id", person.getId())
+      .executeUpdate();
+    }
+  }
+
+  public List<Person> getPersons() {
+   try(Connection con = DB.sql2o.open()){
+     String joinQuery = "SELECT person_id FROM communities_persons WHERE community_id = :community_id";
+     List<Integer> personIds = con.createQuery(joinQuery)
+       .addParameter("community_id", this.getId())
+       .executeAndFetch(Integer.class);
+
+     List<Person> persons = new ArrayList<Person>();
+
+     for (Integer personId : personIds) {
+       String personQuery = "SELECT * FROM persons WHERE id = :personId";
+       Person person = con.createQuery(personQuery)
+         .addParameter("personId", personId)
+         .executeAndFetchFirst(Person.class);
+       persons.add(person);
+     }
+     return persons;
+   }
+ }
 }
