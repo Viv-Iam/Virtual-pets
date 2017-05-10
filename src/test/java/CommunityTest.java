@@ -25,3 +25,11 @@ public class CommunityTest {
       Community testCommunity = new Community("Water Enthusiasts", "Lovers of all things water monsters!");
       assertEquals("Lovers of all things water monsters!", testCommunity.getDescription());
 }
+
+@Test
+  public void equals_returnsTrueIfNameAndDescriptionAreSame_true() {
+    Community testCommunity = new Community("Fire Enthusiasts", "Flame on!");
+    Community anotherCommunity = new Community("Fire Enthusiasts", "Flame on!");
+    assertTrue(testCommunity.equals(anotherCommunity));
+  }
+}
