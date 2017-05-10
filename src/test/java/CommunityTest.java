@@ -20,4 +20,8 @@ public class CommunityTest {
     assertEquals("Water Enthusiasts", testCommunity.getName());
   }
 
+  @Test
+    public void getName_communityInstantiatesWithDescription_String() {
+      Community testCommunity = new Community("Water Enthusiasts", "Lovers of all things water monsters!");
+      assertEquals("Lovers of all things water monsters!", testCommunity.getDescription());
 }
