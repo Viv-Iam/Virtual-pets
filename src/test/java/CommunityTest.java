@@ -39,4 +39,14 @@ public class CommunityTest {
     testCommunity.save();
     assertEquals(true, Community.all().get(0).equals(testCommunity));
   }
+
+  @Test
+  public void all_returnsAllInstancesOfCommunity_true() {
+    Community firstCommunity = new Community("Fire Enthusiasts", "Flame on!");
+    firstCommunity.save();
+    Community secondCommunity = new Community("Water Enthusiasts", "Lovers of all things water monsters!");
+    secondCommunity.save();
+    assertEquals(true, Community.all().get(0).equals(firstCommunity));
+    assertEquals(true, Community.all().get(1).equals(secondCommunity));
+  }
 }

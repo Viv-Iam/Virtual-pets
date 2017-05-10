@@ -1,3 +1,7 @@
+import org.sql2o.*;
+import java.util.ArrayList;
+import java.util.List;
+
 public class Community {
   private String name;
   private String description;
@@ -25,5 +29,23 @@ public String getName() {
     return this.getName().equals(newCommunity.getName()) &&
            this.getDescription().equals(newCommunity.getDescription());
    }
+  }
+
+  public void save() {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "INSERT INTO communities (name, description) VALUES (:name, :description)";
+      this.id = (int) con.createQuery(sql, true)
+        .addParameter("name", this.name)
+        .addParameter("description", this.description)
+        .executeUpdate()
+        .getKey();
+    }
+  }
+
+  public static List<Community> all() {
+    String sql = "SELECT * FROM communities";
+    try(Connection con = DB.sql2o.open()) {
+    return con.createQuery(sql).executeAndFetch(Community.class);
+    }
   }
 }
