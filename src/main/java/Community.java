@@ -84,11 +84,15 @@ public String getName() {
  }
 
  public void delete() {
-    try(Connection con = DB.sql2o.open()) {
-    String sql = "DELETE FROM communities WHERE id = :id;";
-    con.createQuery(sql)
-      .addParameter("id", this.id)
-      .executeUpdate();
-    }
-  }
+     try(Connection con = DB.sql2o.open()) {
+     String sql = "DELETE FROM communities WHERE id = :id;";
+     con.createQuery(sql)
+       .addParameter("id", this.id)
+       .executeUpdate();
+     String joinDeleteQuery = "DELETE FROM communities_persons WHERE community_id = :communityId";
+     con.createQuery(joinDeleteQuery)
+       .addParameter("communityId", this.getId())
+       .executeUpdate();
+     }
+   }
 }
