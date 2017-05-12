@@ -90,4 +90,15 @@ public class PersonTest {
     assertEquals(1, savedCommunities.size());
   }
 
+  @Test
+  public void leaveCommunity_removesAssociationWithSpecifiedCommunity() {
+    Community testCommunity = new Community("Fire Enthusiasts", "Flame on!");
+    testCommunity.save();
+    Person testPerson = new Person("Henry", "henry@henry.com");
+    testPerson.save();
+    testPerson.leaveCommunity(testCommunity);
+    List savedCommunities = testPerson.getCommunities();
+    assertEquals(0, savedCommunities.size());
+  }
+
 }
